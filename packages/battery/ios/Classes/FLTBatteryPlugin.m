@@ -35,7 +35,9 @@
     } else {
       result(@(batteryLevel));
     }
-  } else {
+  }else if ([@"isLowPowerModeEnabled" isEqualToString:call.method]){
+      result([self isLowPowerModeEnabled])
+  }else {
     result(FlutterMethodNotImplemented);
   }
 }
@@ -72,6 +74,10 @@
   } else {
     return ((int)(device.batteryLevel * 100));
   }
+}
+
+- (BOOL)isLowPowerModeEnabled {
+    return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
 }
 
 #pragma mark FlutterStreamHandler impl
