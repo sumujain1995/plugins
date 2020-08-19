@@ -49,6 +49,11 @@ class Battery {
   Future<int> get batteryLevel => _methodChannel
       .invokeMethod<int>('getBatteryLevel')
       .then<int>((dynamic result) => result);
+  
+  /// Returns isLowPowerModeEnabled
+  Future<bool> get isLowPowerModeEnabled => _methodChannel
+      .invokeMethod<bool>('isLowPowerModeEnabled')
+      .then<bool>((dynamic result) => result);
 
   /// Fires whenever the battery state changes.
   Stream<BatteryState> get onBatteryStateChanged {
